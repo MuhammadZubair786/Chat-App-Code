@@ -10,16 +10,6 @@
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
-     <!-- live style switcher  -->
-     <link rel="stylesheet" class="alternate-style"  title="pink" href="pink/pink.css">
-     <link rel="stylesheet" class="alternate-style" title="blue" href="pink/blue.css" disabled>
-     <link rel="stylesheet" class="alternate-style" title="orange" href="pink/orange.css" disabled>
-     <link rel="stylesheet" class="alternate-style" title="yellow" href="pink/yellow.css" disabled>
-     <link rel="stylesheet" class="alternate-style" title="green" href="pink/green.css" disabled>
-     <link rel="stylesheet" href="pink/styleswitcher.css">
-
-     <link rel="stylesheet" href="pink/styleswitcher.css">
-
     <!-- font awesome  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
@@ -29,216 +19,170 @@
 
 <body>
     <!-- Top  -->
-    
+    <span class="top"></span>
 
+    <!-- Main Div -->
     <div class="container-fluid chatbox shadow-lg rounded">
+        <div class="row h-100">
 
-        <!-- <div class="row h-100"> -->
-        <div class="row main-row">
             <!-- Left Side  -->
-            <!-- <div class="col col-2 col-sm-2 col-md-4 pr-0  " id='side2'> -->
-            <div class="col-2 col-sm-2 col-md-4 pr-0 " id="side-1">
-                <div class="card left-card ">
+            <div class="col-2 col-sm-2 col-md-4 pr-0 " id=side2>
+                <div class="card h-100">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10 col-sm-10 col-md-10">
-                                <img id='imgProfile' src="img/pp.png" alt="" class="rounded-circle profile-pic "
-                                    style="margin-left:-10px">
-                                <b id='uname' class="d-none d-md-block"></b>
+                                <img src="img/pp.png" id='imgProfile' class="rounded-circle profile-pic">
+                                <b id='uname'  class="d-none d-md-block"></b>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2">
-                                <div class='dropleft'>
-                                    <span class="dropdown-toggle" data-toggle='dropdown' style="float: right;">
-                                        <i class='fas fa-ellipsis-v ' id="icon" 
-                                            style="cursor: pointer;"></i>
-
-                                    </span>
-                                    <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item" data-toggle="modal"
-                                            data-target='#modalFriendList' id='linkNewChat' onclick="PopulateFriendList()">New Chat</a>
-                                        <a href="#" id='lnkSigIn' onclick=" Sign_In()" class="dropdown-item">Sign In</a>
-                                        <a href="#" id='lnkSigOut' onclick=" Sign_Out()" class="dropdown-item"
-                                            style="display: none;">Sign Out</a>
+                               <div class="dropleft" > 
+                                   <span class="dropdown-toggle" data-toggle='dropdown' style="float:right">
+                                     <i class='fas fa-ellipsis-v icon'  style="cursor: pointer;float: right;"></i> 
+                          
+                                   </span>
+                                   <div class="dropdown-menu" >
+                                       <a href='#' class="dropdown-item" id='lnkNewChat' onclick="PopulateFriendList()" data-toggle='modal' data-target='#modalFriendList'>New Chat</a>
+                                       <a href='#' id='lnkSigIn' onclick="Sign_In()" class="dropdown-item">Sign In</a>
+                                       <a href='#' id='lnkSigOut' onclick="Sign_Out()" class="dropdown-item" style="display: none;">Sign Out</a>
 
 
-                                    </div>
-                                    <div class="modal fade" id='modalFriendList'>
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <b
-                                                            style="font-weight: bold;font-size: 20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Friend
-                                                            Chat List</b>
-                                                        <span class="close" data-dismiss='modal'
-                                                            style="cursor: pointer;">&times;</span>
-                                                    </div>
-                                                    <ul class="list-group list-group-flush" id='lstFriend'></ul>
+                                   </div>
+                                   <div class="modal fade" id='modalFriendList'>
+                                       <div class="modal-dialog">
+                                           <div class="modal-content">
+                                               <div class="card">
+                                                   <div class="card-header">
+                                                       Friend List New
+                                                       <span class="close" data-dismiss='modal'
+                                                       style="cursor: pointer;">&times;</span>
+                                                   </div>
+                                                   <ul class="list-group list-group-flush" id='lstFriend'></ul>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                  
+                               </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <!-- <i class='fas fa-arrow-left d-md-none' onclick="hidelist()" style="cursor: pointer;"></i> -->
                             </div>
-                            <!-- <div class="col-2 col-sm-2 col-md-2 d-md-none">
-                                <i class="fas fa-arrow-left" style="cursor: pointer;font-size: 20px;" onclick='hideChatList()'></i>
-                            </div> -->
                         </div>
+                        
                     </div>
-                    <ul class="list-group " id='lstChat'>
-                       
+                    <ul class="list-group list-group-flush" id='lstChat'>
                        
                         
-                      
-                        </ul>
-
+                        
+                        
+                    </ul>
                 </div>
             </div>
-            <div class="col-10 col-sm-10  col-md-8 pl-0" id="side-2">
-                <div id='chatPanel' class="card " style="display: none;">
+            <!-- End Left Side   -->
+
+            <!-- Right Side -->
+            <div class="col-10 col-sm-10  col-md-8 pl-0 " id="side1">
+                <div class="card   " id='chatPanel' style="display: none;" >
                     <div class="card-header">
                         <div class="row">
+                            <!-- <div class="col col-1 col-sm-1 col-md-1 col-lg-1 d-md-none"> -->
+                                <!-- <i class="fas fa-list" onclick="showlist()" style="cursor: pointer;"></i> -->
+                            <!-- </div> -->
                             <div class="col-2 col-sm-2 col-md-2 col-lg-2">
-                                <img src="img/pp.png" alt="" id='imgChat' class="profile-pic">
+                                <img src="img/pp.png" id='imgChat' class="rounded-circle profile-pic">
                             </div>
                             <div class="col-5 col-sm-5 col-md-5 col-lg-8">
-                                <div class="name" style="margin-left: 10px;" id='divChatName'>Any Name</div>
-                                <div class="under-name" style="margin-left: 10px;" id='divChatSeen'>Last Seen</div>
+                                <div class="name " id="divChatName">Any Name</div>
+                                <div class="under-name">This is something Message Text .....</div>
                             </div>
-                            <div class="col-5 col-sm-5 col-md-5 col-lg-2 icon">
+                            <div class="col-5 col-sm-5 col-md-5 col-lg-2  icon_top ">
                                 <i class="fas fa-search"></i>
-                                <i class="fas fa-paperclip  " style="margin-left: 10px;"></i>
-                                <i class="fas fa-ellipsis-v " style="margin-left: 10px;"></i>
+                                <i class="fas fa-paperclip ml-4"></i>
+                                <i class="fas fa-ellipsis-v ml-4"></i>
 
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body" id="messages"  >
-                        <h1>NEW NEW</h1>
-                       
-                       
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-body" id='messages'>
+                        
+                       
+
+
+                    </div>
+                    <div class="card-footer ">
                         <div class="row">
-                            <div class="col-2   col-md-1 ">
+                            <div class=" col-2   col-md-1 ">
                                 <i class="far fa-grin fa-2x"></i>
                             </div>
-                            <div class="col-8  col-md-10">
-                                <input type="text" class="form-control form-round" id='txtMessage'
-                                    onclick="key_press()">
-
+                            <div class="col-8  col-md-10" >
+                                <input type="text" class="form-control form-round" id='txtMessage'>
                             </div>
-                            <div class="col-2  col-md-1">
-                                <i class="fas fa-microphone fa-2x"></i>
+                            <div class="col-2  col-md-1" id='voice'>
+                                <i class="fas fa-microphone fa-2x" ></i>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
-                <div id="divStart" class="text-center">
-                    <b class="text-center" style="font-size: 30px;font-weight: bold;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Chat App </b><br>
-                    <i class="far fa-comments" style="font-size: 200px;color: blue;"></i>
-                    <br>
-                    <font style="font-size: 20px;font-weight: bold;">Select Your Friend From List And Start Chating.
-                    </font>
-                    <br>  <br>
-                    <b style="font-size: 20px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Chat App Made By Muhammad Zubair Minhas</b>
-                    <!-- <a href="#" onclick="showChatList()" class="d-md-none" >Chat List </a> -->
-                    <!-- <button onclick="Sign_In()" class="btn btn-primary"
-                        style="font-size: large;font-family: 'Courier New', Courier, monospace;font-weight: bold;border: 2px solid brown;border-radius: 10px;">Sig
-                        in</button>
-                    <button onclick="Sign_Out()" class="btn btn-secondary"
-                        style="font-size: large;font-family: 'Courier New', Courier, monospace;font-weight: bold;border: 2px solid brown;border-radius: 10px;">Sig
-                        Out</button> -->
+                <div id='divStart' class='text-center'>
+                    <h1 class="text-center " style="margin-top: 110px;">Welcome Chat App</h1>
+                    <i class="far fa-comments" style="font-size: 200px;color: blue;"></i><br>
+                    <font style="font-size: 20px;font-weight: bold;">Select Your Friend From List  And Start Chating.</font>
+                    <br> <br>
+                    <!-- <button onclick="Sign_In()" class="btn btn-primary"  style="font-size: 20px;font-weight: bold;font-family: 'Courier New', Courier, monospace;"> SIGN IN</button>
+                    <button onclick="Sign_Out()" class="btn btn-primary"  style="font-size: 20px;font-weight: bold;font-family: 'Courier New', Courier, monospace;"> SIGN OUt</button> -->
+                    
+                    <!-- <a href="#" onclick="showlist()" class="d-md-none" >Chat List </a> -->
+                    
                 </div>
 
-
             </div>
+            <!-- End Right Side -->
         </div>
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-<!-- live style switcher  -->
-<div class="style-switcher" style="position: absolute;top: 10px;">
-    <div class="toggle-style-switcher">
-      <i class="fa fa-cog fa-spin"></i>
-    </div>
-    <h5>LEFT CARD COLOR CHANGED</h5>
-    <ul>
-     
-      <li><a href="javascript:void(0);" title="yellow" style="background-color: #ffb400" onclick="setActiveStyle('yellow')"></a></li>
-      <li><a href="javascript:void(0);" title="green" style="background-color: #72b626" onclick="setActiveStyle('green')"></a></li>
-      <li><a href="javascript:void(0);" title="pink" style="background-color: #ec1839" onclick="setActiveStyle('pink')"></a></li>
-      <li><a href="javascript:void(0);" title="blue" style="background-color: #2196f3" onclick="setActiveStyle('blue')"></a></li>
-      <li><a href="javascript:void(0);" title="orange" style="background-color: #fa5b0f" onclick="setActiveStyle('orange')"></a></li>
-    </ul>
-    <h5>Body Skin</h5>
-    <label>
-      <input type="radio" class="body-skin" name="body-style" value="light" checked="true">
-      <span style="color: #8f8d8d; font-size: 13px;">light</span>
-    </label>
-  <label>
-    <input type="radio" class="body-skin" name="body-style" value="dark">
-    <span style="color:#8f8d8d; font-size: 13px;" >dark</span>
-  </label>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth().js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script>
 
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyDkGBGR1VhXZ-m3ONWMVDvGyUyaGfLp9ss",
-            authDomain: "chat-app-edb95.firebaseapp.com",
-            databaseURL: "https://chat-app-edb95.firebaseio.com",
-            projectId: "chat-app-edb95",
-            storageBucket: "chat-app-edb95.appspot.com",
-            messagingSenderId: "984377945634",
-            appId: "1:984377945634:web:0341e352081b4b4224247b"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-
-
-    <script src="app.js"></script>
-    <script src="firebase_init.js"></script>
-    <script src="styleSwitcher.js"></script>
+<!--
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>  -->   
+ <script src="firebase_init.js"></script>
+<script src="app.js"></script> 
 </body>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script> -->
+
+<!-- 
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCUJ0o26AVHlLR2FZ45rHYHh3aIYjCBkJ8",
+    authDomain: "chat-app-485ce.firebaseapp.com",
+    databaseURL: "https://chat-app-485ce.firebaseio.com",
+    projectId: "chat-app-485ce",
+    storageBucket: "chat-app-485ce.appspot.com",
+    messagingSenderId: "412261535201",
+    appId: "1:412261535201:web:50adc076952bc3a443d6a0",
+    measurementId: "G-FWTKG3RKVJ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="app.js"></script> -->
 
 </html>
