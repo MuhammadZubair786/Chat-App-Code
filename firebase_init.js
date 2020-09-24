@@ -1,5 +1,5 @@
- // Your web app's Firebase configuration
- var firebaseConfig = {
+// Your web app's Firebase configuration
+var firebaseConfig = {
   apiKey: "AIzaSyDkGBGR1VhXZ-m3ONWMVDvGyUyaGfLp9ss",
   authDomain: "chat-app-edb95.firebaseapp.com",
   databaseURL: "https://chat-app-edb95.firebaseio.com",

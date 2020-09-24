@@ -27,7 +27,7 @@
 
             <!-- Left Side  -->
             <div class="col-2 col-sm-2 col-md-4 pr-0 " id=side2>
-                <div class="card h-100">
+                <div class="card ">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10 col-sm-10 col-md-10">
@@ -91,13 +91,36 @@
                             <div class="col-2 col-sm-2 col-md-2 col-lg-2">
                                 <img src="img/pp.png" id='imgChat' class="rounded-circle profile-pic">
                             </div>
-                            <div class="col-5 col-sm-5 col-md-5 col-lg-8">
+                            <div class="col-5 col-sm-5 col-md-5 col-lg-7">
                                 <div class="name " id="divChatName">Any Name</div>
                                 <div class="under-name">This is something Message Text .....</div>
                             </div>
-                            <div class="col-5 col-sm-5 col-md-5 col-lg-2  icon_top ">
+                            <div class="col-5 col-sm-5 col-md-5 col-lg-3  icon_top ">
                                 <i class="fas fa-search"></i>
-                                <i class="fas fa-paperclip ml-4"></i>
+
+                                    <span class="dropdown" > 
+                                        <span class="dropdown-toggle" data-toggle='dropdown' >
+                                          <i class='fas fa-paperclip  ml-4 icon'  ></i> 
+                               
+                                        </span>
+                                        <div class="dropdown-menu" >
+                                            <a href='#' class="dropdown-item" onclick='ChooseImage()'>
+                                                Images
+                                                <input type="file" id='imageFile' onchange="SendImage(this)" accept="image/*" style="display: none;">
+                                            </a>
+                                            <a href='#' class="dropdown-item" >Document</a>
+                                            <a href='#' class="dropdown-item" >Camera</a>
+                                            <a href='#' class="dropdown-item" >Video</a>
+
+                                           
+
+     
+     
+                                        </div>
+                                       
+                                       
+                                    </span>
+                                
                                 <i class="fas fa-ellipsis-v ml-4"></i>
 
                             </div>
@@ -111,12 +134,35 @@
 
                     </div>
                     <div class="card-footer ">
+                        <div class="row" style="position: relative;" >
+                            <div class="col-md-12" id='emoji'>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist" >
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Smiley" role="tab" aria-controls="home" aria-selected="true">Smiley</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                                    </li>
+                                  </ul>
+                                  <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="Smiley" role="tabpanel" aria-labelledby="home-tab">
+                                        </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                                  </div>
+                                
+
+                            </div>
+                        </div>
                         <div class="row">
-                            <div class=" col-2   col-md-1 ">
-                                <i class="far fa-grin fa-2x"></i>
+                            <div class=" col-2   col-md-1 "  style="cursor: pointer;">
+                                <i class="far fa-grin fa-2x" onclick='ShowEmoji()'></i>
                             </div>
                             <div class="col-8  col-md-10" >
-                                <input type="text" class="form-control form-round" id='txtMessage'>
+                                <input type="text" class="form-control form-round" onfocus="hideEmoji()" id='txtMessage'>
                             </div>
                             <div class="col-2  col-md-1" id='voice'>
                                 <i class="fas fa-microphone fa-2x" ></i>
@@ -149,8 +195,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase.js"></script>
 <!--
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>

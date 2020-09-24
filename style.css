@@ -65,6 +65,7 @@ background-color: blue;
 .icon_top{
     font-size: 20px;
     color: rgb(117, 118, 119);
+    cursor: pointer;
 }
 .chat-pic{
     width: 30px;
@@ -101,3 +102,37 @@ background-color: blue;
 .dropdown-toggle::before{
     display: none !important;
 }
+
+#lstChat{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.dropdown-toggle::after{
+    display: none !important;
+}
+
+
+
+
+#emoji{
+    position: relative;
+ 
+    background-color: white;
+    border-radius: 5px ;
+    box-shadow: rgba(0,0,0,0.16) 0px 3px 6px ,rgba(0,0,0,0.23) 0px 3px 6px;
+    overflow: scroll;
+
+
+}
+
+#emoji #myTabContent{
+    height: 28vh;
+    
+}
+
+#myTabContent a{
+    text-decoration: none;
+}
+

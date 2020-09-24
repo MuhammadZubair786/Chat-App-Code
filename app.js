@@ -84,6 +84,13 @@ function LoadChatMessages(chatKey,friendPhoto){
     chats.forEach(function (data) {
       var chat = data.val()
       var datetime=chat.dataTime.split(",")
+      var msg=''
+      if(chat.msg.indexOf("base64")!= -1){
+        msg =`<img src="${chat.msg}" class="img-fluid">`
+      }
+      else{
+          msg=chat.msg
+      }
       if (chat.userId !== currentUserKey) {
         messageDisplay += `
         <div class="row">
@@ -91,7 +98,7 @@ function LoadChatMessages(chatKey,friendPhoto){
                            <img src="${friendPhoto}" class="chat-pic rounded-circle">
                        </div>
                        <div class='col col-6 col-sm-7 col-md-7'>
-                           <p class="R_message  ">${chat.msg}
+                           <p class="R_message  ">${msg}
                                <span class="time float-right">${datetime[1]}</span>
                            </p>
                        </div>
@@ -103,7 +110,7 @@ function LoadChatMessages(chatKey,friendPhoto){
                            
                 <div class='col col-6 col-sm-7 col-md-7'>
                 <p class="S_message float-right">
-                ${chat.msg}
+                ${msg}
                     <span class="time float-right" }">${datetime[1]}</span>
                 </p>
             </div>
@@ -200,6 +207,35 @@ function LoadChatList(){
 }
 
 
+////Emoji send
+function ShowEmoji(){
+    document.getElementById('emoji').removeAttribute('style')
+}
+
+
+//Hide Emoji Panel
+function hideEmoji(){
+    document.getElementById('emoji').setAttribute('style','display:none')
+
+}
+
+function getEmoji(emj){
+    // console.log("good")
+     document.getElementById('txtMessage').value +=emj.innerHTML
+}
+
+////call load Emoji Function when page refresh
+loadAllEmoji()
+
+//Load All Emoji
+function loadAllEmoji(){
+    var emj='';
+    for(var j=128512;j<128567;j++){
+        emj += `<a href="#" style='font-size:40px' onclick="getEmoji(this)">&#${j};</a>`;
+                                   
+    }
+    document.getElementById('Smiley').innerHTML=emj;
+}
 
 
 
@@ -213,6 +249,10 @@ function LoadChatList(){
 //     })
 // }
 
+
+
+
+///Send Msg
 function Send_Msg(){
     var chatMessage={
         userId:currentUserKey,
@@ -252,6 +292,72 @@ function Send_Msg(){
    
 
 }
+
+
+
+///SEND IMAGE
+function ChooseImage(){
+    document.getElementById('imageFile').click();
+
+}
+
+function SendImage(event){
+        var file =event.files[0]
+        if(!file.type.match('image.*')){
+            alert("Plz Select Only Images")
+        }
+        else{
+            var reader=new FileReader()
+            reader.addEventListener('load',function(){
+                // alert(reader.result)
+                var chatMessage={
+                    userId:currentUserKey,
+                    msg:reader.result,
+                    dataTime:new Date().toLocaleString(),  
+                
+                }
+            
+                firebase.database().ref('chatMessage').child(chatKey).push(chatMessage,function(error){
+                    if(error){
+                        alert(error)
+                    }
+                    else{
+                //         var new_msg = `<div class="row justify-content-end">
+                                       
+                //         <div class='col col-6 col-sm-7 col-md-7'>
+                //         <p class="S_message float-right">
+                //         ${document.getElementById('txtMessage').value}
+                //             <span class="time float-right">4.00pm</span>
+                //         </p>
+                //     </div>
+                //     <div class='col col-1 col-sm-1 col-md-1'>
+                //         <img src="${firebase.auth().currentUser.photoURL}" class="rounded-circle chat-pic">
+                //         </div>
+                //      </div>`
+            
+                // document.getElementById('messages').innerHTML += new_msg
+            
+            
+                 document.getElementById("txtMessage").value=''
+                 document.getElementById("txtMessage").focus();
+            
+                // document.getElementById('messages').scrollTo(0, document.getElementById('messages').scrollHeight);
+                
+                    }
+                })
+               
+                
+                
+                
+            },false)
+            if(file){
+                reader.readAsDataURL(file)
+            }
+
+        }
+}
+
+
 
 
 
